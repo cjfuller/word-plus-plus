@@ -1,0 +1,29 @@
+:root {
+    --bg-color: #222;
+    --fg-color: #ddd;
+    --font-stack: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+    --border: 1px solid #777;
+    --letter-box-size: 70px;
+    --exact-bg: #083;
+    --inexact-bg: #560;
+
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    font-family: var(--font-stack);
+    box-sizing: border-box;
+    font-size: 34px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.grid-row:first-child .outer {
+    border-top: var(--border);
+}
+.wpp-row .outer {
+    border-top: var(--border);
+}
