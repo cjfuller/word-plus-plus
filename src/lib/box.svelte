@@ -6,13 +6,20 @@
     answer?: string;
     wpp?: string;
     onChanged: () => void;
-    hpos?: GridIndex;
+    hpos: GridIndex;
+    vpos?: GridIndex;
 	}
-	let { letter = $bindable(), answer, onChanged, wpp, hpos }: Props = $props();
-  let highlight = answer !== undefined && wpp !== undefined && hpos !== undefined ? statusForLetter(answer, wpp, hpos) : "absent";
+	let { letter = $bindable(), answer, onChanged, wpp, hpos, vpos }: Props = $props();
+  let highlight = answer !== undefined && wpp !== undefined && vpos !== undefined ? statusForLetter(answer, wpp, hpos) : "absent";
+  const id = `${hpos}_${vpos ?? "wpp"}`;
+  const label = vpos === undefined ? `word++, letter ${hpos + 1}` : `letter at row ${vpos + 1}, column ${hpos + 1}`;
+
 </script>
 
-<div class={`outer ${highlight}`}><input class="letter-input" type="text" bind:value={letter} onchange={onChanged}></div>
+<div class={`outer ${highlight}`}>
+  <label class="visually-hidden" for={id}>{label}</label>
+  <input id={id} class="letter-input" type="text" bind:value={letter} onchange={onChanged}>
+</div>
 
 <style>
   .inexact {
